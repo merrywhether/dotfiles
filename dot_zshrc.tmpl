@@ -1,0 +1,38 @@
+# chezmoi templating https://pkg.go.dev/text/template
+
+# History
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE autocd
+
+# Completions
+autoload -U compinit; compinit
+
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+{{ if eq .chezmoi.hostname "stokeProM3" }}
+# LM Studio
+export PATH="$PATH:$HOME/.lmstudio/bin"
+{{ end }}
+
+export VISUAL="zed --wait"
+export EDITOR="zed --wait"
+export PAGER="bat --plain"
+
+alias pn=pnpm
+
+alias gaa="git add -A"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gcan="git commit --amend --no-edit"
+alias grh="git reset --hard"
+
+source <(fzf --zsh)
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"

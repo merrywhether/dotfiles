@@ -1,0 +1,34 @@
+# https://starship.rs/config/
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$directory$character"
+right_format = "($cmd_duration )($git_branch$git_status )$time"
+
+[directory]
+truncation_length = 5
+style = "bold purple"
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+symbol = '🪾'
+style = "bold cyan"
+
+[git_status]
+format = '[$all_status$ahead_behind]($style)'
+style = "cyan"
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+min_time = 1_000
+show_milliseconds = true
+show_notifications = true
+min_time_to_notify = 20_000
+
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%H:%M"
+style = "dimmed"
