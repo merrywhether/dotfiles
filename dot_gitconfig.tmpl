@@ -1,0 +1,32 @@
+[user]
+{{- if eq .context "twitch" }}
+	name = merrywhether
+	email = kerarist@twitch.tv
+{{- else }}
+	name = Risto Keravuori
+	email = r@risto.io
+{{- end }}
+[alias]
+	aa = add --all
+	cm = commit -m
+	co = checkout
+	cob = checkout -b
+	can = commit --amend --no-edit
+	lg = log --oneline --graph --decorate
+	rh = reset --hard
+[checkout]
+	defaultremote = o
+[clone]
+	defaultremotename = o
+[diff]
+	colormoved = zebra
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	default = current
+[rerere]
+	enabled = true

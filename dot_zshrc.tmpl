@@ -1,10 +1,8 @@
 # chezmoi templating https://pkg.go.dev/text/template
-# Machine flags: set [data] twitch = true in chezmoi.toml for Twitch workstations
-
-{{ if .twitch }}
+{{- if eq .context "twitch" }}
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
-{{ end }}
+{{- end }}
 
 # History
 export HISTSIZE=1000000000
@@ -20,10 +18,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-{{ if eq .chezmoi.hostname "stokeProM3" }}
+{{- if eq .chezmoi.hostname "stokeProM3" }}
 # LM Studio
 export PATH="$PATH:$HOME/.lmstudio/bin"
-{{ end }}
+{{- end }}
 
 export VISUAL="zed --wait"
 export EDITOR="zed --wait"
@@ -45,8 +43,7 @@ source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-se
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
-{{ if .twitch }}
-
+{{- if eq .context "twitch" }}
 export PATH=$PATH:$HOME/.toolbox/bin
 
 export TWITCH_ANDROID_HOME=$HOME/Developer/twitch-android
@@ -62,4 +59,4 @@ source $HOME/.brazil_completion/zsh_completion
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
-{{ end }}
+{{- end }}
