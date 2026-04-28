@@ -12,21 +12,32 @@
 	co = checkout
 	cob = checkout -b
 	can = commit --amend --no-edit
+	fu = commit --fixup
 	lg = log --oneline --graph --decorate
 	rh = reset --hard
+	rom = rebase o/main
 [checkout]
 	defaultremote = o
 [clone]
 	defaultremotename = o
+[core]
+	excludesFile = ~/.gitignore_global
 [diff]
 	colormoved = zebra
 [fetch]
 	prune = true
 [init]
 	defaultBranch = main
+[merge]
+	conflictstyle = zdiff3
+	command = meld
 [pull]
 	rebase = true
 [push]
+	autoSetupRemote = true
 	default = current
+[rebase]
+	autoSquash = true
+	autoStash = true
 [rerere]
 	enabled = true
