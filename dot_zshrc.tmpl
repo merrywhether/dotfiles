@@ -38,8 +38,8 @@ alias gcan="git commit --amend --no-edit"
 alias grh="git reset --hard"
 
 source <(fzf --zsh)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
 
