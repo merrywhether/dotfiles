@@ -21,6 +21,7 @@
     "dock": "right",
   },
   "context_servers": {
+{{- if eq .context "personal" }}
     "mcp-server-playwright": {
       "enabled": false,
       "remote": false,
@@ -36,6 +37,7 @@
         "figma_api_key": "{{ keyring "chezmoi" "figma_api_key" }}",
       },
     },
+{{- end }}
   },
   "agent_servers": {
     "claude-acp": {
