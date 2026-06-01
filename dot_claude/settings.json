@@ -1,4 +1,22 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(~/Developer/**)",
+      "Edit(~/Developer/**)",
+      "Write(~/Developer/**)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(rm -r*)",
+      "Bash(rm -R*)",
+      "Bash(rm -fr*)",
+      "Bash(rm -fR*)",
+      "Bash(rm --recursive*)"
+    ]
+  },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
@@ -6,9 +24,5 @@
         "repo": "anthropics/claude-plugins-official"
       }
     }
-  },
-  "permissions": {
-    "allow": ["Bash(*)"],
-    "deny": ["Bash(sudo *)", "Bash(rm -r*)", "Bash(rm -R*)"]
   }
 }
