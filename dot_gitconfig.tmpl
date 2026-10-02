@@ -1,11 +1,11 @@
 [user]
+	name = merrywhether
 {{- if eq .context "kong" }}
-	name = risto.keravuori
 	email = risto.keravuori@konghq.com
 {{- else }}
-	name = Risto Keravuori
 	email = r@risto.io
 {{- end }}
+	signingkey = ~/.ssh/id_ed25519.pub
 [alias]
 	aa = add --all
 	cm = commit -m
@@ -20,10 +20,22 @@
 	defaultremote = o
 [clone]
 	defaultremotename = o
+[commit]
+	gpgsign = true
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
 [diff]
 	colormoved = zebra
 [fetch]
 	prune = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 [init]
 	defaultBranch = main
 [merge]
@@ -39,3 +51,5 @@
 	autoStash = true
 [rerere]
 	enabled = true
+[tag]
+	gpgsign = true
