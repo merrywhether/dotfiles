@@ -19,6 +19,15 @@ esac
 export PATH="$PATH:$HOME/.lmstudio/bin"
 {{- end }}
 
+{{- if eq .context "kong" }}
+
+# rustup is keg-only (it conflicts with the rust formula), so Homebrew doesn't link it.
+export PATH="$(brew --prefix rustup)/bin:$PATH"
+
+# Claude Code through Kong AI Gateway, kept out of ~/.claude/settings.json so Claude.app is unaffected.
+alias klaude='claude --settings ~/.claude/kong-gateway.json'
+{{- end }}
+
 export VISUAL="zed --wait"
 export EDITOR="zed --wait"
 export PAGER="bat --plain"
