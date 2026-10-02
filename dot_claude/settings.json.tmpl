@@ -1,0 +1,52 @@
+{
+{{- if eq .context "kong" }}
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
+{{- end }}
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "model": "opus[1m]",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Read(~/Developer/**)",
+      "Edit(~/Developer/**)",
+      "Read(/tmp/**)",
+      "Edit(/tmp/**)",
+{{- if eq .context "kong" }}
+      "Edit(~/.local/share/makewhether/**)",
+      "Read(~/.local/share/makewhether/**)",
+{{- end }}
+      "Read(/private/tmp/**)",
+      "Edit(/private/tmp/**)",
+      "Read(/private/var/folders/**)",
+      "Edit(/private/var/folders/**)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+{{- if eq .context "kong" }}
+      "Edit(~/.local/share/makewhether/secrets/**)"
+{{- end }}
+    ],
+    "defaultMode": "auto"
+  },
+  "promptCacheTtl": "1h",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "theme": "auto",
+  "tui": "fullscreen"
+}
