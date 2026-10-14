@@ -25,8 +25,8 @@
       "Read(/tmp/**)",
       "Edit(/tmp/**)",
 {{- if eq .context "kong" }}
-      "Edit(~/.local/share/makewhether/**)",
-      "Read(~/.local/share/makewhether/**)",
+      "Edit(~/.local/share/multiwork/**)",
+      "Read(~/.local/share/multiwork/**)",
 {{- end }}
       "Read(/private/tmp/**)",
       "Edit(/private/tmp/**)",
@@ -37,7 +37,7 @@
     ],
     "deny": [
 {{- if eq .context "kong" }}
-      "Edit(~/.local/share/makewhether/secrets/**)"
+      "Edit(~/.local/share/multiwork/secrets/**)"
 {{- end }}
     ],
     "defaultMode": "auto"
