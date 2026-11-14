@@ -16,7 +16,7 @@
 	lg = log --oneline --graph --decorate
 	rh = reset --hard
 	# origin where it exists; repos cloned before 2026-11-13 still use o
-	rom = "!git rebase \"$(git remote | grep -x origin || git remote | head -n1)/main\""
+	rom = rebase origin/main
 [commit]
 	gpgsign = true
 [credential "https://github.com"]
