@@ -15,11 +15,8 @@
 	fu = commit --fixup
 	lg = log --oneline --graph --decorate
 	rh = reset --hard
-	rom = rebase o/main
-[checkout]
-	defaultremote = o
-[clone]
-	defaultremotename = o
+	# origin where it exists; repos cloned before 2026-11-13 still use o
+	rom = "!git rebase \"$(git remote | grep -x origin || git remote | head -n1)/main\""
 [commit]
 	gpgsign = true
 [credential "https://github.com"]
