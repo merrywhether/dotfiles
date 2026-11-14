@@ -8,7 +8,7 @@ Each folder is its own private git repo. Which ones are cloned depends on the ma
 {{ range (splitList "," (index . "loreRepos" | default "")) -}}
 {{- $repo := trim . -}}
 {{- if $repo -}}
-- `{{ $repo | base | trimPrefix "lore-" }}/`
+- `{{ $repo | base }}/`
 {{ end -}}
 {{- end }}
 Each repo's `readme.md` states its scope, what never goes in it, and its layout. Read it
@@ -16,7 +16,8 @@ before writing there.
 
 ## Where writes go
 
-- Facts about Risto that hold everywhere (preferences, conventions): `risto/`.
+- Anything that holds in every context (who Risto is, preferences, conventions, general tool knowledge):
+  `global/`. "Global" means on every machine; it is still private.
 - Work for an employer or a project: that repo.
 - Unsure: the narrower repo. Moving content toward a broader repo can leak for good, while the
   reverse is safe to fix later.
