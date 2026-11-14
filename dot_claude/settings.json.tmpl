@@ -1,23 +1,4 @@
 {
-{{- if eq .context "kong" }}
-  "enabledPlugins": {
-    "figma@claude-plugins-official": true
-  },
-{{- end }}
-  "extraKnownMarketplaces": {
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
-    }
-  },
-  "model": "opus[1m]",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
-  },
   "permissions": {
     "allow": [
       "Read(~/Developer/**)",
@@ -42,11 +23,32 @@
     ],
     "defaultMode": "auto"
   },
-  "promptCacheTtl": "1h",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+{{- if eq .context "kong" }}
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
+{{- end }}
+  "extraKnownMarketplaces": {
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "promptCacheTtl": "1h",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "tui": "fullscreen",
   "theme": "auto",
-  "tui": "fullscreen"
+  "switchModelsOnFlag": true,
+  "agentPushNotifEnabled": true
 }
