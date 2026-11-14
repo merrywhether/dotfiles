@@ -1,5 +1,7 @@
+{{- $loreRepos := promptStringOnce . "loreRepos" "Lore repos to clone into ~/lore (owner/name, comma-separated, blank for none)" -}}
 [data]
-    context = {{ promptChoice "Device context" (list "personal" "kong") | quote }}
+    context = {{ promptChoiceOnce . "context" "Device context" (list "personal" "kong") | quote }}
+    loreRepos = {{ $loreRepos | quote }}
 
 [merge]
     command = "meld"

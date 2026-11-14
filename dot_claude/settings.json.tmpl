@@ -5,6 +5,8 @@
       "Edit(~/Developer/**)",
       "Read(/tmp/**)",
       "Edit(/tmp/**)",
+      "Read(~/lore/**)",
+      "Edit(~/lore/**)",
 {{- if eq .context "kong" }}
       "Edit(~/.local/share/multiwork/**)",
       "Read(~/.local/share/multiwork/**)",
@@ -21,7 +23,8 @@
       "Edit(~/.local/share/multiwork/secrets/**)"
 {{- end }}
     ],
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "additionalDirectories": ["~/lore"]
   },
   "model": "opus",
   "statusLine": {

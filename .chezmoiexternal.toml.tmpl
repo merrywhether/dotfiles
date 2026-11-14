@@ -1,0 +1,13 @@
+# Lore repos under ~/lore, one folder per repo (lore-<name> -> ~/lore/<name>).
+# The repo list is machine-local chezmoi data (loreRepos, asked once by
+# `chezmoi init`), so private repo names stay out of this public repo.
+# Cloned on first apply; pulled again only by `chezmoi apply --refresh-externals`.
+{{- range (splitList "," (index . "loreRepos" | default "")) }}
+{{- $repo := trim . }}
+{{- if $repo }}
+
+[{{ printf "lore/%s" ($repo | base | trimPrefix "lore-") | quote }}]
+    type = "git-repo"
+    url = {{ printf "git@github.com:%s.git" $repo | quote }}
+{{- end }}
+{{- end }}

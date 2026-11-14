@@ -1,0 +1,29 @@
+# Lore
+
+Lore is Risto's private knowledge: who he is, how he works, and what he knows about each project.
+It is the entry point for agents and for Risto. "Update lore" means write it here.
+
+Each folder is its own private git repo. Which ones are cloned depends on the machine:
+
+{{ range (splitList "," (index . "loreRepos" | default "")) -}}
+{{- $repo := trim . -}}
+{{- if $repo -}}
+- `{{ $repo | base | trimPrefix "lore-" }}/`
+{{ end -}}
+{{- end }}
+Each repo's `readme.md` states its scope, what never goes in it, and its layout. Read it
+before writing there.
+
+## Where writes go
+
+- Facts about Risto that hold everywhere (preferences, conventions): `risto/`.
+- Work for an employer or a project: that repo.
+- Unsure: the narrower repo. Moving content toward a broader repo can leak for good, while the
+  reverse is safe to fix later.
+
+## Status (2026-11-13)
+
+This is a baseline copy. Each repo's `.llms/` is still the live source until the cutover, so
+read from `.llms/` and don't edit the copies here.
+
+chezmoi writes this file from `~/.local/share/chezmoi/lore/readme.md.tmpl`.
