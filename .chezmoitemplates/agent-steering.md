@@ -13,8 +13,5 @@ Durable context, plans and task notes go to lore, not into the checkout, unless 
 the content should be checked in and shared. "Update lore" means write there, then commit and
 push that lore repo.
 
-- A checkout's `.llms/` folder, where one exists, is a generated copy (it holds a
-  `GENERATED.md`). Never edit it: edit the lore file it came from, then run the sync that
-  `GENERATED.md` names.
 - Lore is private. Never copy its content anywhere public (checked-in files, PRs, issues,
   public repos) unless Risto asks.
