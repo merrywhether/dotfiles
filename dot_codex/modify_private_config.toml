@@ -1,7 +1,7 @@
 {{- /* chezmoi:modify-template */ -}}
 {{- $current := .chezmoi.stdin | fromToml -}}
 {{- $preferences := fromToml `
-model = "gpt-6.2-sol"
+model = "gpt-6.2-astra"
 model_reasoning_effort = "high"
 
 [features]
