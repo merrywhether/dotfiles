@@ -1,0 +1,40 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $current := .chezmoi.stdin | fromToml -}}
+{{- $preferences := fromToml `
+model = "gpt-6.2-sol"
+model_reasoning_effort = "high"
+
+[features]
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true
+` -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{- $desktopPreferences := fromToml `
+[desktop]
+appearanceLightCodeThemeId = "catppuccin"
+appearanceTheme = "system"
+appearanceDarkCodeThemeId = "catppuccin"
+selected-avatar-id = "hoots"
+mac-menu-bar-enabled = false
+confirm-before-close = "never"
+git-pull-request-merge-method = "squash"
+agent-usage-reset-enabled = true
+git-branch-prefix = "c/"
+
+[desktop.open-in-target-preferences]
+global = "zed"
+
+[apps.connector_openai_chatgpt_pets]
+enabled = false
+` -}}
+{{- $preferences = mergeOverwrite $preferences $desktopPreferences -}}
+{{- end -}}
+{{- $merged := mergeOverwrite (deepCopy $current) $preferences -}}
+{{- if deepEqual $merged $current -}}
+{{-   .chezmoi.stdin -}}
+{{- else -}}
+{{-   $merged | toToml -}}
+{{- end -}}
