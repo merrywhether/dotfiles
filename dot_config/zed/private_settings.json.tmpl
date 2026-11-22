@@ -49,6 +49,11 @@
 {{- end }}
   },
   "agent_servers": {
+{{- if eq .chezmoi.hostname "stokeAirM5" }}
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+{{- end }}
     "claude-acp": {
       "favorite_config_option_values": {
         "model": [
@@ -57,7 +62,7 @@
       },
       "default_config_options": {
         "mode": "auto",
-        "model": "opus[1m]",
+        "model": "opus",
       },
       "type": "registry",
     },
