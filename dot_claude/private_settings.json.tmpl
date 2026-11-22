@@ -18,13 +18,17 @@
       "WebFetch",
       "WebSearch"
     ],
-    "deny": [
 {{- if eq .context "kong" }}
+    "deny": [
       "Edit(~/.local/share/multiwork/secrets/**)"
-{{- end }}
     ],
+{{- else }}
+    "deny": [],
+{{- end }}
     "defaultMode": "auto",
-    "additionalDirectories": ["~/lore"]
+    "additionalDirectories": [
+      "~/lore"
+    ]
   },
   "model": "opus",
   "statusLine": {

@@ -17,6 +17,9 @@ esac
 {{- if eq .chezmoi.hostname "stokeProM3" }}
 # LM Studio
 export PATH="$PATH:$HOME/.lmstudio/bin"
+
+# Unity CLI
+if [ -f "$HOME/.unity/env" ]; then . "$HOME/.unity/env"; fi
 {{- end }}
 
 {{- if eq .context "kong" }}
